@@ -1,0 +1,107 @@
+// C++ code
+
+#define RED 8
+#define YELLOW 9
+#define GREEN 10
+
+#define RED_n 11
+#define YELLOW_n 12
+#define GREEN_n 13
+
+#define GREEN_p 7
+
+
+void setup(){
+  pinMode(RED, OUTPUT);
+  pinMode(YELLOW, OUTPUT);
+  pinMode(GREEN, OUTPUT);
+  
+  pinMode(RED_n, OUTPUT);
+  pinMode(YELLOW_n, OUTPUT);
+  pinMode(GREEN_n, OUTPUT);
+  
+  pinMode(6, INPUT);
+  pinMode(7, OUTPUT);
+}
+
+int inv = 0;
+void loop(){
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  digitalWrite(RED, HIGH);
+  digitalWrite(YELLOW, LOW);
+  digitalWrite(GREEN, LOW);
+  delay(1000);
+  
+  
+  if(inv == 1){
+    digitalWrite(7, HIGH);
+    delay(2000);
+    digitalWrite(7, LOW);
+    delay(1000);
+    inv = 0;
+  }
+  
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  digitalWrite(RED_n, LOW);
+  digitalWrite(YELLOW_n, LOW);
+  digitalWrite(GREEN_n, HIGH);
+  delay(3000);
+  
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  digitalWrite(RED_n, LOW);
+  digitalWrite(YELLOW_n, HIGH);
+  digitalWrite(GREEN_n, LOW);
+  delay(2000);
+  
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  digitalWrite(RED_n, HIGH);
+  digitalWrite(YELLOW_n, LOW);
+  digitalWrite(GREEN_n, LOW);  
+  delay(1000);
+  
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  if(inv == 1)
+  {
+    digitalWrite(7, HIGH);
+    delay(2000);
+    digitalWrite(7, LOW);
+    delay(1000);
+    inv = 0;
+  }
+  
+  digitalWrite(RED, LOW);
+  digitalWrite(YELLOW, LOW);
+  digitalWrite(GREEN, HIGH);
+  delay(3000);
+  
+  
+  if(digitalRead(6) == HIGH){
+    inv = 1;
+  }
+  
+  digitalWrite(RED, LOW);
+  digitalWrite(YELLOW, HIGH);
+  digitalWrite(GREEN, LOW);
+  delay(2000);
+
+}

@@ -1,0 +1,22 @@
+void setup(){
+  pinMode(A0, INPUT);
+  pinMode(2, OUTPUT);
+  
+  //Serial.begin(9600);
+}
+
+int dianoite;
+
+void loop(){
+  dianoite = analogRead(A0);
+  
+  if(dianoite<512)
+    digitalWrite(2,HIGH);
+  else
+    digitalWrite(2,LOW);
+  
+  //Serial.print("Leitura ");
+  //Serial.println(dianoite);
+  //delay(1000); 
+  
+}

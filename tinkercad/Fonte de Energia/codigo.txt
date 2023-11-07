@@ -1,0 +1,23 @@
+// C++ code
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(A0, INPUT);
+}
+
+int res;
+float volt;
+
+void loop(){
+
+  res = analogRead(A0);
+  Serial.print("Leitura ADC ");
+  Serial.println(res);
+
+  volt = 5.0 * res / 1023.0;
+  Serial.print("Leitura VOLT ");
+  Serial.println(volt,4);
+
+  delay(1000);
+  
+}
