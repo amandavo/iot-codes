@@ -1,13 +1,13 @@
 #include <WiFi.h>
 
 String uid;
-char *ssid = "Galaxy";
+char *ssid = "iPhone S2";
 char *pwd = "12345678";
 
 void connectWiFI() {
   Serial.print("Conectando...");
   while(WiFi.status() != WL_CONNECTED){
-    dalay(500);
+    delay(500);
     Serial.print(":");
   }
   Serial.println("");
@@ -25,5 +25,4 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
 }

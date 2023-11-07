@@ -1,11 +1,15 @@
 #include <WiFi.h>
 #define LED 2
 
+String uid;
+char *ssid = "iPhone S2";
+char *pwd = "12345678";
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED, OUTPUT);
   Serial.begin(115200);
-  Serial.print("Meu macaddress ->>>> ");
+  Serial.print("Meu macaddress -> ");
   Serial.println(WiFi.macAddress());
 }
 

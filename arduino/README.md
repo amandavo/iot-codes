@@ -9,7 +9,7 @@ A seguir, contém a lista de arquivos com explicações para facilitar a compree
 
 - **localIP:** Conecta a uma rede Wi-Fi e obtém o endereço MAC do dispositivo, além de configurar a comunicação serial.
 
-- **BluetoothSerialBLE:** O código aguarda dados da conexão Bluetooth para quando os receber, acender o LED e os imprimir no console.
+- **BluetoothSerial:** O código aguarda dados da conexão Bluetooth para quando os receber, acender o LED e os imprimir no console.
 
 - **ntpServer_time:** Sincroniza o dispositivo com a hora atual de um servidor de tempo NTP (Network Time Protocol)  e imprime a hora a cada minuto.
 

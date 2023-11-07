@@ -6,8 +6,7 @@ SemaphoreHandle_t mutex;
 float temp = 0.0;
 float umi = 0.0;
 
-void minhaTask1(void *pvParameters)
-{
+void minhaTask1(void *pvParameters){
   Serial.println("Começou a task 1");
   while(true){
     xSemaphoreTake(mutex, portMAX_DELAY);
@@ -18,8 +17,7 @@ void minhaTask1(void *pvParameters)
   }
 }
 
-void minhaTask2(void *pvParameters)
-{
+void minhaTask2(void *pvParameters){
   Serial.println("Começou a task 2");
   while(true){
     temp = temp - 0.09;
@@ -28,11 +26,11 @@ void minhaTask2(void *pvParameters)
   }
 }
 
-void setup() {
+void setup(){
   Serial.begin(115200);
 
   mutex = xSemaphoreCreateMutex();
-  if (mutex == NULL){
+  if(mutex == NULL){
     Serial.println("Erro ao criar mutex");
   }
 
@@ -60,12 +58,15 @@ void setup() {
 
 }
 
-void loop() { 
+void loop(){ 
   xSemaphoreTake(mutex,portMAX_DELAY);
+  
   Serial.println("Temperatura");
   Serial.println(temp);
+  
   Serial.println("Umidade");
   Serial.println(umi);
+  
   //xSemaphoreGive(mutex);
   delay(1000);
 }

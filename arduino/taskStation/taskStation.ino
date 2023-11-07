@@ -26,7 +26,7 @@ String serverName = "http://postman-echo.com/post";
 char *ssid = "nao tem wifi";
 char *pwd = "40028922";
 
-//configsdo servidor NTP
+//configs do servidor NTP
 char *ntpServer = "br.pool.ntp.org";
 long gmtOffset = -3;
 int daylight = 0;
@@ -50,8 +50,7 @@ void tColeta(void *pvParameters){
 
 void connectWiFi(){
   Serial.print("Conectando o WiFI ");
-  while(WiFi.status() != WL_CONNECTED)
-  {
+  while(WiFi.status() != WL_CONNECTED){
     delay(500);
     Serial.print(".");
   }
@@ -69,7 +68,7 @@ void tTemInternet(void *pvParameters){
   }
 }
 
-void setup() {
+void setup(){
   Serial.begin(115200);
   uid = WiFi.macAddress();
   uid.replace(":", "");
@@ -106,20 +105,16 @@ void setup() {
 void sincronizaTempo(void){
   //Configurando o tempo
   configTime(gmtOffset, daylight, ntpServer);
-  if (!getLocalTime(&timeinfo))
-  {
+  if(!getLocalTime(&timeinfo)){
     Serial.println("Erro ao acessar o servidor NTP"); 
-  }
-  else
-  {
-    Serial.print("Configurado Data/Hora ");
+  }else{
+    Serial.print("Data/Hora configurada");
     Serial.println(time(&now));
   }
 }
 
 void loop(){
-  if ((time(&now) % 120) == 0)
-  {
+  if((time(&now) % 120) == 0){
     Serial.println("Time to transfer");
     sincronizaTempo();
     xSemaphoreTake(mutex, portMAX_DELAY);
@@ -148,12 +143,9 @@ void loop(){
 
     Serial.print("\n\r HTTP CODE=");
     Serial.println(http_get_code);
-    if (http_get_code > 0)
-    {
+    if(http_get_code > 0){
       Serial.println(http_post.getString());
-    }
-    else
-    {
+    }else{
       Serial.println("Erro ao executar o GET");
     }
   }

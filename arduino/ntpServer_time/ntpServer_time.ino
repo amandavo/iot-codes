@@ -11,11 +11,9 @@ int daylight = 0;
 time_t now;
 struct tm timeinfo;
 
-void connectWiFi()
-{
+void connectWiFi(){
   Serial.print("Conectando ");
-  while(WiFi.status() != WL_CONNECTED)
-  {
+  while(WiFi.status() != WL_CONNECTED){
     delay(500);
     Serial.print(".");
   }
@@ -24,33 +22,30 @@ void connectWiFi()
   Serial.println(WiFi.localIP());
 }
 
-void setup() {
+void setup(){
   Serial.begin(115200);
   uid = WiFi.macAddress();
   uid.replace(":", "");
   WiFi.begin(ssid, pwd);
   connectWiFi();
   configTime(gmtOffset, daylight, ntpServer);
-  if (!getLocalTime(&timeinfo))
-  {
+  if (!getLocalTime(&timeinfo)){
     Serial.println("Erro ao acessar o servidor NTP"); 
-  }
-  else
-  {
+  }else{
     Serial.print("Hora: ");
     Serial.println(time(&now));
   }
 }
 
 int jaentrei = 0;
-void loop() {
-  if ((time(&now) % 60) == 0) {
-    if (!jaentrei) {
+void loop(){
+  if((time(&now) % 60) == 0){
+    if(!jaentrei){
       jaentrei = 1;
       Serial.print("Transmitir -> ");
       Serial.println(time(&now));
     }
-  } else {
+  }else{
     jaentrei = 0;
   }
 }
